@@ -13,7 +13,8 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 0
@@ -30,11 +31,12 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 1
-                    where parameters[0].ParameterType == typeof(T1)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -48,12 +50,13 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 2
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -67,13 +70,14 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 3
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -87,14 +91,15 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 4
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -108,15 +113,16 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 5
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -130,16 +136,17 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 6
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -153,17 +160,18 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 7
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -177,18 +185,19 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 8
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -202,19 +211,20 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 9
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -228,20 +238,21 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 10
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -255,21 +266,22 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 11
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -283,22 +295,23 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 12
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -312,23 +325,24 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 13
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -342,24 +356,25 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 14
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
-                    where parameters[13].ParameterType == typeof(T14)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
+                    where parameters[13].ParameterType.IsAssignableFrom(typeof(T14))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -373,25 +388,26 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 15
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
-                    where parameters[13].ParameterType == typeof(T14)
-                    where parameters[14].ParameterType == typeof(T15)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
+                    where parameters[13].ParameterType.IsAssignableFrom(typeof(T14))
+                    where parameters[14].ParameterType.IsAssignableFrom(typeof(T15))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -405,26 +421,27 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
                 let parameters = m.GetParameters()
                     where parameters.Length == 16
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
-                    where parameters[13].ParameterType == typeof(T14)
-                    where parameters[14].ParameterType == typeof(T15)
-                    where parameters[15].ParameterType == typeof(T16)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
+                    where parameters[13].ParameterType.IsAssignableFrom(typeof(T14))
+                    where parameters[14].ParameterType.IsAssignableFrom(typeof(T15))
+                    where parameters[15].ParameterType.IsAssignableFrom(typeof(T16))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -438,9 +455,10 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 0
                 select m;
@@ -456,12 +474,13 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 1
-                    where parameters[0].ParameterType == typeof(T1)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -475,13 +494,14 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 2
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -495,14 +515,15 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 3
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -516,15 +537,16 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 4
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -538,16 +560,17 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 5
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -561,17 +584,18 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 6
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -585,18 +609,19 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 7
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -610,19 +635,20 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 8
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -636,20 +662,21 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 9
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -663,21 +690,22 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 10
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -691,22 +719,23 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 11
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -720,23 +749,24 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 12
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -750,24 +780,25 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 13
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -781,25 +812,26 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 14
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
-                    where parameters[13].ParameterType == typeof(T14)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
+                    where parameters[13].ParameterType.IsAssignableFrom(typeof(T14))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -813,26 +845,27 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 15
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
-                    where parameters[13].ParameterType == typeof(T14)
-                    where parameters[14].ParameterType == typeof(T15)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
+                    where parameters[13].ParameterType.IsAssignableFrom(typeof(T14))
+                    where parameters[14].ParameterType.IsAssignableFrom(typeof(T15))
                 select m;
             
             result = candidates.FirstOrDefault();
@@ -846,27 +879,28 @@ namespace Phaka.Reflection
             
             result = null;
             
-            var candidates = from m in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+            var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+            var candidates = from m in methods
                 where m.Name.Equals(methodName, StringComparison.OrdinalIgnoreCase)
-                where m.ReturnType == returnType
+                where returnType.IsAssignableFrom(m.ReturnType)
                 let parameters = m.GetParameters()
                     where parameters.Length == 16
-                    where parameters[0].ParameterType == typeof(T1)
-                    where parameters[1].ParameterType == typeof(T2)
-                    where parameters[2].ParameterType == typeof(T3)
-                    where parameters[3].ParameterType == typeof(T4)
-                    where parameters[4].ParameterType == typeof(T5)
-                    where parameters[5].ParameterType == typeof(T6)
-                    where parameters[6].ParameterType == typeof(T7)
-                    where parameters[7].ParameterType == typeof(T8)
-                    where parameters[8].ParameterType == typeof(T9)
-                    where parameters[9].ParameterType == typeof(T10)
-                    where parameters[10].ParameterType == typeof(T11)
-                    where parameters[11].ParameterType == typeof(T12)
-                    where parameters[12].ParameterType == typeof(T13)
-                    where parameters[13].ParameterType == typeof(T14)
-                    where parameters[14].ParameterType == typeof(T15)
-                    where parameters[15].ParameterType == typeof(T16)
+                    where parameters[0].ParameterType.IsAssignableFrom(typeof(T1))
+                    where parameters[1].ParameterType.IsAssignableFrom(typeof(T2))
+                    where parameters[2].ParameterType.IsAssignableFrom(typeof(T3))
+                    where parameters[3].ParameterType.IsAssignableFrom(typeof(T4))
+                    where parameters[4].ParameterType.IsAssignableFrom(typeof(T5))
+                    where parameters[5].ParameterType.IsAssignableFrom(typeof(T6))
+                    where parameters[6].ParameterType.IsAssignableFrom(typeof(T7))
+                    where parameters[7].ParameterType.IsAssignableFrom(typeof(T8))
+                    where parameters[8].ParameterType.IsAssignableFrom(typeof(T9))
+                    where parameters[9].ParameterType.IsAssignableFrom(typeof(T10))
+                    where parameters[10].ParameterType.IsAssignableFrom(typeof(T11))
+                    where parameters[11].ParameterType.IsAssignableFrom(typeof(T12))
+                    where parameters[12].ParameterType.IsAssignableFrom(typeof(T13))
+                    where parameters[13].ParameterType.IsAssignableFrom(typeof(T14))
+                    where parameters[14].ParameterType.IsAssignableFrom(typeof(T15))
+                    where parameters[15].ParameterType.IsAssignableFrom(typeof(T16))
                 select m;
             
             result = candidates.FirstOrDefault();

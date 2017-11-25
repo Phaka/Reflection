@@ -3,6 +3,7 @@
 namespace Phaka.Reflection
 {
     using System;
+    using System.Collections.Generic;
     using Moq;
     using Xunit;
     
@@ -49,6 +50,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action() {}
+                    public void DerivedParameters() {}
                 }
                 
             }
@@ -86,6 +88,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1) {}
+                    }
                 }
                 
                 [Fact]
@@ -106,6 +127,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1) {}
+                    public void DerivedParameters(IEnumerable<int> arg1) {}
                     
                     public void Action(Guid arg1) {}
                 }
@@ -165,6 +187,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2) {}
+                    }
                 }
                 
                 [Fact]
@@ -185,6 +226,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2) {}
                     
                     public void Action(Guid arg1, Guid arg2) {}
                 }
@@ -264,6 +306,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3) {}
+                    }
                 }
                 
                 [Fact]
@@ -284,6 +345,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3) {}
                 }
@@ -383,6 +445,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4) {}
+                    }
                 }
                 
                 [Fact]
@@ -403,6 +484,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4) {}
                 }
@@ -522,6 +604,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5) {}
+                    }
                 }
                 
                 [Fact]
@@ -542,6 +643,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5) {}
                 }
@@ -681,6 +783,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6) {}
+                    }
                 }
                 
                 [Fact]
@@ -701,6 +822,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6) {}
                 }
@@ -860,6 +982,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7) {}
+                    }
                 }
                 
                 [Fact]
@@ -880,6 +1021,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7) {}
                 }
@@ -1059,6 +1201,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8) {}
+                    }
                 }
                 
                 [Fact]
@@ -1079,6 +1240,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8) {}
                 }
@@ -1278,6 +1440,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9) {}
+                    }
                 }
                 
                 [Fact]
@@ -1298,6 +1479,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9) {}
                 }
@@ -1517,6 +1699,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10) {}
+                    }
                 }
                 
                 [Fact]
@@ -1537,6 +1738,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10) {}
                 }
@@ -1776,6 +1978,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11) {}
+                    }
                 }
                 
                 [Fact]
@@ -1796,6 +2017,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11) {}
                 }
@@ -2055,6 +2277,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12) {}
+                    }
                 }
                 
                 [Fact]
@@ -2075,6 +2316,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12) {}
                 }
@@ -2354,6 +2596,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13) {}
+                    }
                 }
                 
                 [Fact]
@@ -2374,6 +2635,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13) {}
                 }
@@ -2673,6 +2935,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13, ILoggerFactory arg14) {}
+                    }
                 }
                 
                 [Fact]
@@ -2693,6 +2974,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13, IEnumerable<int> arg14) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13, Guid arg14) {}
                 }
@@ -3012,6 +3294,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13, ILoggerFactory arg14, ILoggerFactory arg15) {}
+                    }
                 }
                 
                 [Fact]
@@ -3032,6 +3333,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13, IEnumerable<int> arg14, IEnumerable<int> arg15) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13, Guid arg14, Guid arg15) {}
                 }
@@ -3371,6 +3673,25 @@ namespace Phaka.Reflection
                         Assert.Null(method);
                         
                     }
+                    
+                    [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public void Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13, ILoggerFactory arg14, ILoggerFactory arg15, ILoggerFactory arg16) {}
+                    }
                 }
                 
                 [Fact]
@@ -3391,6 +3712,7 @@ namespace Phaka.Reflection
                 public class StubObject
                 {
                     public void Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15, string arg16) {}
+                    public void DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13, IEnumerable<int> arg14, IEnumerable<int> arg15, IEnumerable<int> arg16) {}
                     
                     public void Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13, Guid arg14, Guid arg15, Guid arg16) {}
                 }
@@ -3497,6 +3819,28 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure() { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -3532,6 +3876,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType() { return Guid.Empty; }
                     public string Action() { return null; }
+                    public string DerivedParameters() { return null; }
                 }
                 
             }
@@ -3571,6 +3916,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -3606,6 +3992,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1) { return Guid.Empty; }
                     public string Action(string arg1) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1) { return null; }
                     
                     public string Action(Guid arg1) { return null; }
                 }
@@ -3667,6 +4054,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -3702,6 +4130,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2) { return Guid.Empty; }
                     public string Action(string arg1, string arg2) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2) { return null; }
                 }
@@ -3783,6 +4212,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -3818,6 +4288,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3) { return null; }
                 }
@@ -3919,6 +4390,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -3954,6 +4466,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4) { return null; }
                 }
@@ -4075,6 +4588,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -4110,6 +4664,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5) { return null; }
                 }
@@ -4251,6 +4806,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -4286,6 +4882,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6) { return null; }
                 }
@@ -4447,6 +5044,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -4482,6 +5120,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7) { return null; }
                 }
@@ -4663,6 +5302,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -4698,6 +5378,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8) { return null; }
                 }
@@ -4899,6 +5580,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -4934,6 +5656,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9) { return null; }
                 }
@@ -5155,6 +5878,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -5190,6 +5954,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10) { return null; }
                 }
@@ -5431,6 +6196,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -5466,6 +6272,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11) { return null; }
                 }
@@ -5727,6 +6534,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -5762,6 +6610,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12) { return null; }
                 }
@@ -6043,6 +6892,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -6078,6 +6968,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13) { return null; }
                 }
@@ -6379,6 +7270,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13, ILoggerFactory arg14) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -6414,6 +7346,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13, IEnumerable<int> arg14) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13, Guid arg14) { return null; }
                 }
@@ -6735,6 +7668,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13, ILoggerFactory arg14, ILoggerFactory arg15) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -6770,6 +7744,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13, IEnumerable<int> arg14, IEnumerable<int> arg15) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13, Guid arg14, Guid arg15) { return null; }
                 }
@@ -7111,6 +8086,47 @@ namespace Phaka.Reflection
                     }
                     
                     [Fact]
+                    public void WithDerivedArguments()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        
+                        // Act
+                        var result = target.TryFindMethod<LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory, LoggerFactory>(typeof(Startup), nameof(Startup.Configure), typeof(string), out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class Startup
+                    {
+                        public string Configure(ILoggerFactory arg1, ILoggerFactory arg2, ILoggerFactory arg3, ILoggerFactory arg4, ILoggerFactory arg5, ILoggerFactory arg6, ILoggerFactory arg7, ILoggerFactory arg8, ILoggerFactory arg9, ILoggerFactory arg10, ILoggerFactory arg11, ILoggerFactory arg12, ILoggerFactory arg13, ILoggerFactory arg14, ILoggerFactory arg15, ILoggerFactory arg16) {return null;}
+                    }
+                    
+                    [Fact]
+                    public void WithDerivedReturnType()
+                    {
+                        // Arrange
+                        var target = new Reflector();
+                        var type = typeof(StubStartupWithConfigureThatReturns);
+                        var methodName = nameof(StubStartupWithConfigureThatReturns.Configure);
+                        var returnType = typeof(IMyServiceProvider);
+                        
+                        // Act
+                        var result = target.TryFindMethod<string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string>(type, methodName, returnType, out var method);
+                        
+                        // Assert
+                        Assert.True(result);
+                        Assert.NotNull(method);
+                    }
+                    
+                    public class StubStartupWithConfigureThatReturns
+                    {
+                        public MyServiceProvider Configure(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15, string arg16) { return null; }
+                    }
+                    
+                    [Fact]
                     public void WithInvalidReturnType()
                     {
                         // Arrange
@@ -7146,6 +8162,7 @@ namespace Phaka.Reflection
                 {
                     public Guid ActionWithInvalidReturnType(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15, string arg16) { return Guid.Empty; }
                     public string Action(string arg1, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10, string arg11, string arg12, string arg13, string arg14, string arg15, string arg16) { return null; }
+                    public string DerivedParameters(IEnumerable<int> arg1, IEnumerable<int> arg2, IEnumerable<int> arg3, IEnumerable<int> arg4, IEnumerable<int> arg5, IEnumerable<int> arg6, IEnumerable<int> arg7, IEnumerable<int> arg8, IEnumerable<int> arg9, IEnumerable<int> arg10, IEnumerable<int> arg11, IEnumerable<int> arg12, IEnumerable<int> arg13, IEnumerable<int> arg14, IEnumerable<int> arg15, IEnumerable<int> arg16) { return null; }
                     
                     public string Action(Guid arg1, Guid arg2, Guid arg3, Guid arg4, Guid arg5, Guid arg6, Guid arg7, Guid arg8, Guid arg9, Guid arg10, Guid arg11, Guid arg12, Guid arg13, Guid arg14, Guid arg15, Guid arg16) { return null; }
                 }
@@ -7232,6 +8249,12 @@ namespace Phaka.Reflection
                 }
             }
             
+            
+            
+            public interface ILoggerFactory {}
+            public class LoggerFactory : ILoggerFactory {}
+            public interface IMyServiceProvider {}
+            public class MyServiceProvider : IMyServiceProvider {}
         }
         public class TryInvokeMethod
         {
